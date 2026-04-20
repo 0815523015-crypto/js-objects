@@ -3,20 +3,31 @@ console.log("Script started")
 // TODO: Test working with objects here
 
 
-
-function processForm() {
+ // TODO: prevent this function from reloading the page when the form is submitted
+function processForm(event){
+    event.preventDefault();
     console.log("click");
-    // TODO: prevent this function from reloading the page when the form is submitted
 
+    let newUser = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    birthdate: document.getElementById("birthdate").value,
+    favoriteColor: document.getElementById("favoriteColor").value
+};
+    addUser(newUser);
+}
     // TODO: Create a newUser object that has all the user's info from the form
 
     // TODO: Call the addUser function and pass the newUser object as a parameter
-}
 
 function addUser(user) {
     // Create a div to hold the user's info
     let div = document.createElement("div");
+   
+    div.style.backgroundColor = user.favoriteColor;
     // TODO: Set the background color of the div to the user's favorite color
+
+
 
     // Create a heading for the user's name
     let name = document.createElement("h2");
@@ -34,4 +45,5 @@ function addUser(user) {
     div.appendChild(birthdate); // Add the paragraph to the div
 
     document.body.appendChild(div); // Add the div to the page
+
 }
